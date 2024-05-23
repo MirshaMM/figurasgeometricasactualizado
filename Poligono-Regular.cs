@@ -31,5 +31,55 @@ namespace figurasgeometricas
                 return apo; //regresa o cacha el valor de la variable apotema
             }
         }
+        public float N //validar el numero de lados <5
+        {
+            set 
+            {
+                //pregunta si el numero de lados (n) >5
+                if (value < 5)
+                {
+                    n = 5; //manda el valor a 0   
+                }//NO EXISTEN APOTEMAS NEGATIVOS
+                else
+                {
+                    n = value;
+                    //value es el valor del textbox
+                }
+            }
+            get //obtener el valor
+            {
+                return n; //regresa o cacha el valor de la variable lado1
+            }
+        }
+        //usamos el constructor de la clase poligono regular
+        public Poligono_Regular (float lado, float apo, float n)
+        {//radio se va a leer de la caja de texto con
+            //usando el boton guardar
+            Lado1 = lado1;
+            Apo = apo;
+            N = n;
+        }
+        //vamos a usar los metodos de la clase padre
+        //vamos a sobreescribir el comportamiento de estas
+        public float area(float peri) //modelo sobrecargado que recibe el perimetro y lo utiliza
+        {
+            return (peri * apo) / 2;
+        }
+        public override float perimetro ()//metodo con variable de paso qeu guarda el perimetro
+        {
+            float peri;
+            peri = n * Lado1;
+            return peri;
+        }
+        public override float volmen ()
+        {
+           throw new Not.ImplementedException();
+            //ESTO ES UNA EXEPCION DE USO DEFAULT DEL SISTEMA
+        }
+         public override float area ()
+        {
+           throw new Not.ImplementedException();
+            //ESTO ES UNA EXEPCION DE USO DEFAULT DEL SISTEMA
+        }
     }
 }
