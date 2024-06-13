@@ -1,4 +1,5 @@
-﻿using System;
+using figurasgeometricas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace figurasgeometricas
 {
-    class Poligono_Regular:Figura //la clase poligono regular es hija de la clase figura --> (clase principal/papá)
+    class PoligonoReg : Figura
     {
-        //declarar dos valores float para guardar numero de lados
+        //declar dos valores float para guardar numero de lados
         //y el apotema privados para usarse solo en esta clase
         private float apo, n;
-        public float Apo //valor apotema existente o real
+
+        public float Apo //validar apotema existente o real
         {
-            set 
+            set
             {
-                //pregunta si el apotema (es el numero del centro del poligono) <0
+                //pregunta si el apotema (es el # del centro del poligono) <0
                 if (value <= 0)
                 {
                     apo = 0; //manda el valor a 0
-                } //NO EXISTEN APOTEMAS NEGATIVOS
-                else 
+                } //NO EXISTEN apotemas NEGATIVOS
+                else
                 {
                     apo = value;
                     //value es el valor del textbox
@@ -28,18 +30,19 @@ namespace figurasgeometricas
             }
             get //obtener el valor
             {
-                return apo; //regresa o cacha el valor de la variable apotema
+                return apo; //regresa o cacha el valor de la variable lado1
             }
         }
-        public float N //validar el numero de lados <5
+
+        public float N //validar el numero de lados >5
         {
-            set 
+            set
             {
-                //pregunta si el numero de lados (n) >5
+                //pregunta si el # de lados (n) >5 
                 if (value < 5)
                 {
-                    n = 5; //manda el valor a 0   
-                }//NO EXISTEN APOTEMAS NEGATIVOS
+                    n = 5; //manda el valor a 0
+                } //NO EXISTEN apotemas NEGATIVOS
                 else
                 {
                     n = value;
@@ -51,34 +54,38 @@ namespace figurasgeometricas
                 return n; //regresa o cacha el valor de la variable lado1
             }
         }
+
         //usamos el constructor de la clase poligono regular
-        public Poligono_Regular (float lado, float apo, float n)
-        {//radio se va a leer de la caja de texto con
+        public PoligonoReg(float lado, float apo, float n)
+        { //radio se va a leer de la caja de texto con
             //usando el boton guardar
-            Lado1 = lado1;
+            Lado1 = lado;
             Apo = apo;
             N = n;
         }
-        //vamos a usar los metodos de la clase padre
-        //vamos a sobreescribir el comportamiento de estas
-        public float area(float peri) //modelo sobrecargado que recibe el perimetro y lo utiliza
+        //vamos a usar los métodos de la clase padre
+        //vamos a sobreesribir el comportamiento de estos
+        public float area(float peri) //medoto sobrecargado que recibe el perimetro y lo utiliza
         {
             return (peri * apo) / 2;
         }
-        public override float perimetro ()//metodo con variable de paso qeu guarda el perimetro
+
+        public override float perimetro() //metodo con variable de paso que guardar el perimetro
         {
             float peri;
             peri = n * Lado1;
             return peri;
         }
-        public override float volmen ()
+
+        public override float volumen()
         {
-           throw new Not.ImplementedException();
+            throw new NotImplementedException();
             //ESTO ES UNA EXEPCION DE USO DEFAULT DEL SISTEMA
         }
-         public override float area ()
+
+        public override float area()//calculo de area clase papa
         {
-           throw new Not.ImplementedException();
+            throw new NotImplementedException();
             //ESTO ES UNA EXEPCION DE USO DEFAULT DEL SISTEMA
         }
     }
